@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
  
 // 全局变量声明
 int g;
@@ -14,7 +13,7 @@ int main ()
   b = 20;
   g = a + b;
  
-  cout << g;
+  printf("%d\n",g);
  
   return 0;
 }

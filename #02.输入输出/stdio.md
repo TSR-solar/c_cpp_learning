@@ -6,21 +6,20 @@ printf还可以用来做计算。见下方代码(printf.c)：
 
 int main()
 {
-	printf("你好，114+514=%d\n", 114+514);
+	printf("hello，114+514=%d\n", 114+514);
 	return 0;
 }
 ```
 这个代码可以输出数字之间的运算；
 
 ```c
-printf("你好，114+514=%d\n", 114 + 514);
+printf("hello，114+514=%d\n", 114 + 514);
 ```
 
 %d 说明后面要有1个整数输出在这个位置上，在后面接一个逗号，填入计算式（当然也可以是一个数）；
 则程序运行过程中，%d 将被替换为计算结果 114+514=628，所以输出：
 
-> 你好，114+514=628
->
+> hello，114+514=628
 
 在C语言中，四则运算符略有不同：
 加号与减号不变；
@@ -40,33 +39,29 @@ printf("你好，114+514=%d\n", 114 + 514);
 #include<stdio.h>
 int main()
 {
-  int atk=0;//  定义变量atk，初始值为0（也可以是其它数值，但必须是整数）
-  printf("我现在有100滴血，请对我攻击\n你的攻击力为：");
-  scanf("%d",&atk);
-    
-  int hp = 100 - atk;
-    //定义另一个变量hp，它的初始值为 100 - atk ;
-    //若先前输入20，则hp的初始值为 100 - 20 = 80 ;
-  printf("OK，我现在还剩下%d滴血\n", hp);
-  return 0;
+	int atk=0;//定义变量atk，初始值为0（也可以是其它数值，但必须是整数）
+	printf("I have 100 hp now,and please attack me.\n All you need to do is to input your attack here:");
+	scanf("%d",&atk);
+	int hp = 100 - atk;//定义另一个变量hp，它的初始值为 100 - atk ;若先前输入20，则hp的初始值为 100 - 20 = 80 ;
+	printf("OK,now I only have %d hp.\n", hp);
+	return 0;
 }
 ```
 
   运行代码，此时屏幕上显示：
 
->我现在有100滴血，请对我攻击
-你的攻击力为：
+>I have 100 hp now,and please attack me.\n All you need to do is to input your attack here:
 
 此时可以在窗口输入内容；
 若为整数，则 &atk 会将输入的内容存储到变量atk上；**若 &atk 没有 & ，代码会直接崩溃。**
 若不为整数，则**直接忽略**你输入的内容，atk**仍为初始值0**；
 
 接下来就很熟悉了，若输入20，则应该输出:
->OK，我现在还剩下80滴血
+>OK,now I only have 80 hp.
 
 注意：若攻击超过100，血量**可以为负**；
 
-## stdio
+## stdio：C语言标准输入输出
 
 都讲了C++的输出了，是时候讲一下stdio到底是什么了；
 

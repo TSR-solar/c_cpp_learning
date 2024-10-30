@@ -2,9 +2,9 @@
 int main()
 {
 	int atk=0;
-	printf("我现在有100滴血，请对我攻击\n你的攻击力为：");
+	printf("I have 100 hp now,and please attack me.\n All you need to do is to input your attack here:");
 	scanf("%d",&atk);
 	int hp = 100 - atk;
-	printf("OK，我现在还剩下%d滴血\n", hp);
+	printf("OK,now I only have %d hp.\n", hp);
 	return 0;
 }

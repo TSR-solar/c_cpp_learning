@@ -72,7 +72,6 @@ struct Books //定义结构体类型Books
    char  subject[100];
    int   book_id;
 } book1;
-B
 typedef struct Books Books;//简化结构体变量调用
 int main()
 {

@@ -22,21 +22,18 @@ int就是一种类型名称，除此之外还有很多种类型名称；
 #include <stdio.h>
 int main()
 {
-	int atk1 = 0 ;
-	int atk2 = 0 ;//定义变量
+	int atk1 = 0 ;//定义变量
+	int atk2 = 0 ;
 	const int ATK3 = 10 ;//定义常量
 	int originalhp = 100;
 
-	printf("我现在有100滴血;\n
-    现在有3名玩家要攻击我;\n
-    已知玩家3的攻击为10;\n");
-
-	printf("请输入玩家1的攻击:");
+	printf("I have 100 hp now.\nThere have 3 players that will attack me.\nWe have known player3's attack is 10.\n");
+	printf("input player1's attack:");
 	scanf("%d", &atk1 );
-	printf("\n请输入玩家2的攻击:");
+	printf("input player2's attack:");
 	scanf("%d", &atk2 );
 	int hp = originalhp - atk1 - atk2 - ATK3;
-	printf("\n OK，我现在还剩下%d-%d-%d-%d=%d滴血；\n ",originalhp,atk1,atk2,ATK3,hp);
+	printf("OK,Now I only have %d-%d-%d-%d=%d hp.\n ",originalhp,atk1,atk2,ATK3,hp);
 	return 0;
 }
 ```
@@ -47,10 +44,10 @@ int main()
 const int 的意义在于给予常数名字，从而增强代码的可读性；    
 如ATK3即玩家3的攻击，它的数值为10；如想修改玩家3的攻击，只需找到ATK3，而不是10；    
 ```c
-printf("我现在有100滴血;\n现在有3名玩家要攻击我;\n已知玩家3的攻击为10;\n");
-printf("请输入玩家1的攻击:");
+printf("I have 100 hp now.\nThere have 3 players that will attack me.\nWe have known player3's attack is 10.\n");
+printf("input player1's attack:");
 scanf("%d", &atk1 );
-printf("\n请输入玩家2的攻击:");
+printf("input player2's attack:");
 scanf("%d", &atk2 );
 ```
 
@@ -59,7 +56,7 @@ scanf("%d", &atk2 );
 同理，碰到scanf后，会暂停读后面的代码；
 ```c
 int hp = originalhp - atk1 - atk2 - ATK3;
-printf("\n OK，我现在还剩下%d-%d-%d-%d=%d滴血；\n ",originalhp,atk1,atk2,ATK3,hp);
+	printf("OK,Now I only have %d-%d-%d-%d=%d hp.\n ",originalhp,atk1,atk2,ATK3,hp);
 ```
 
 这里的printf一次展示了多个变量；    
@@ -67,12 +64,13 @@ printf("\n OK，我现在还剩下%d-%d-%d-%d=%d滴血；\n ",originalhp,atk1,at
 相应地，在后面，要填入等量的变量，中间用逗号隔开，注意变量之间的顺序；
 
 一种代码运行示例：
->我现在有100滴血;
-现在有3名玩家要攻击我;  
-已知玩家3的攻击为10;
-请输入玩家1的攻击:20    
-请输入玩家2的攻击:30 (*20 和 30 为运行时自己输入，可更改。*)  
-OK，我现在还剩下100-20-30-10=40滴血；
+>I have 100 hp now.   
+There have 3 players that will attack me.  
+We have known player3's attack is 10.  
+input player1's attack:20  
+input player2's attack:30  
+(*20 和 30 为运行时自己输入，可更改。*)   
+OK,Now I only have 100-20-30-10=40 hp.  
 
 ## 更多变量类型
 

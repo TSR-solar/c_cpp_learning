@@ -15,54 +15,57 @@ int main()
 	int n = 0;
 	int player = 0;
 
-	printf("现在有10名玩家要攻击我;\n已知玩家10的攻击为10;\n请输入我的血量：");
+	printf("There have 10 players that will attack me.\nWe have known player3's attack is 10.\n\ninput my hp:");
 	scanf("%d", &originalhp);
 	while (originalhp <= 10)
 	{
-		printf("你一定是在逗我玩！怎么给我设置“%d”这么一个血量！那我不一碰就si啦！\n请重新输入：", originalhp);
+		printf("You're kidding me absolutely! I can't live with the hp of %d!!\nPlease input it again:", originalhp);
+
 		scanf("%d", &originalhp);
 	}
-	printf("好的，");
+	printf("OK;\n");
+
 	hp = originalhp;
 
 	do
 	{
-		printf("第%d回合开始！\n", n + 1);
+		printf("Round %d begin!\n", n + 1);
+		printf("I have %d hp now.\n",hp);
 		sumatk = 0;
 		for (player = 1; player <= 9; player++)
 		{
-			printf("请输入玩家%d的攻击:", player);
-			scanf("%d", &atk);
-			for (atk < 0; atk < 0;)
+			printf("input player%d's attack:",player);
+			scanf("%d", &atk );
+			for(;atk<0;)
 			{
-				printf("我知道你不想攻击我，但也别把玩家1的攻击设置成“%d”啊！\n", atk);
-				printf("这可是个负数！我不接受治疗！请重新输入：");
+				printf("I know you don't want to hurt me,but now the attack %d is too ABNORMAL!\n",atk);
+				printf("If you input this atk,it means you want to heal me!I refuse it!!\nPlease input it again:");
 				scanf("%d", &atk);
 			}
 			sumatk += atk;
 		}
 		sumatk += ATK10;
 		hp -= sumatk;
-		printf("OK，本回合我共计受到%d点伤害；\n我现在还剩下",sumatk);
-
+		printf("OK;You hurt me with the sum of %d attack in this round;\nNow I only have",sumatk);
 		int level = hp * 10 / originalhp;
+		
 		if (hp >= originalhp - 10)
-			printf("%d滴血；\n我猜你并没有想攻击我！\nthank you very much!\n", hp);
+		printf(" %d hp;\nI guess you didn't want to hurt me.\nthank you very much!\n", hp);
 		else if (level >= 6)
-			printf("%d滴血；\n我还很健康！感谢您的仁慈！\n", hp);
+		printf(" %d hp;\nMy hp is still high now!\nThanks for your mercy!\n", hp);
 		else if (level >= 1)
-			printf("%d滴血；\n我残血了，但我还活着！\n", hp);
+		printf(" %d hp.\nIt's really hurt... But I'm still alive!\n", hp);
 		else if (hp > 0)
-			printf("%d滴血；\n哦！真幸运！我猜我再被打一次就si了！\n", hp);
+		printf(" %d hp;\nGood! I think I'm so lucky that I made it with such few hp!\n", hp);
 		n++;
 
-		if (hp > 0)
-			printf("虽然我很不想si掉，但是你一定要过关！\n请继续攻击！\n\n\n\n");
+		if(hp > 0)
+		printf("Although I don't want to die now,but I must help you succeed!\nKeep attacking!\n\n");
 	} while (hp > 0);
 
-	printf("...\n不！我的血量耗尽了！\n啊！我si了！\n\n\n");
-	printf("你只用了%d回合就战胜了我；\n", n);
-	printf("恭喜过关，再见！/(ㄒoㄒ)/~~\n");
+	printf("...No!!My hp come to the bottom!\nOops!I DIED!\n");
+	printf("You only take %d round(s) to defeat me!!\n", n);	
+	printf("Congratulation to your success! Goodbye!!\n");
 
 	return 0;
 
@@ -87,28 +90,28 @@ int main()
 			}
 			sumatk += atk;
 		}
-——for循环与其它判断语句类似，也是由小括号和大括号组成；
-——但不同的是，for循环的小括号里面有3条语句，中间用两个分号隔开；
-——即
-——	for(a;b;c)
-——	{d}
-——三条语句分别代表初始动作，循环继续的条件和每次循环结束做的动作；
-——大括号里和其它循环相同，都用来做每次循环中做的动作；
-——例如第一个for，它的流程如下：
-——1.初始化player的值为1；
-——2.判定player的值是否大于10，若大于，则继续进行下面的步骤，反之直接结束循环；
-——3.执行大括号内的代码；
-——4.让player的值加1，以便输入下一名玩家的攻击；
-——5.重复2-4步骤；
-——
-——为了理解方便，可将for翻译为“对于”；
-——这样，for循环的流程可以理解为：
-—— 对于 一开始的player=1，如果player<10，就重复执行大括号里的内容，并让player的值加1，直到player>=10为止；
-——																		（注意：循环结束时，player==11）
-——用字母来表示就是：
-——对于for(a;b;c)
-——	{d}
-——执行顺序为a b d c b d c b d c...（直到b不满足为止）；
+for循环与其它判断语句类似，也是由小括号和大括号组成；
+但不同的是，for循环的小括号里面有3条语句，中间用两个分号隔开；
+即
+	for(a;b;c)
+	{d}
+三条语句分别代表初始动作，循环继续的条件和每次循环结束做的动作；
+大括号里和其它循环相同，都用来做每次循环中做的动作；
+例如第一个for，它的流程如下：
+1.初始化player的值为1；
+2.判定player的值是否大于10，若大于，则继续进行下面的步骤，反之直接结束循环；
+3.执行大括号内的代码；
+4.让player的值加1，以便输入下一名玩家的攻击；
+5.重复2-4步骤；
+
+为了理解方便，可将for翻译为“对于”；
+这样，for循环的流程可以理解为：
+ 对于 一开始的player=1，如果player<10，就重复执行大括号里的内容，并让player的值加1，直到player>=10为止；
+																		（注意：循环结束时，player==11）
+用字母来表示就是：
+对于for(a;b;c)
+	{d}
+执行顺序为a b d c b d c b d c...（直到b不满足为止）；
 */
 
 /*

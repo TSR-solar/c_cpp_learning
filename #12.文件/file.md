@@ -149,3 +149,67 @@ freopen(out.txt,"r",stdout);    // 标准输出重定向到out.txt文本文件
 在重定向操作之后，之前的标准输入输出函数，像`scanf`、`printf`之类的都不会通过终端读写，而是通过文本文件；
 
 重定向有很多好处，比如储存较大的输入文件，而不是每次都在终端上敲一遍；储存输出文件，并和其它输出进行比较；通过加上和删去重定向的方式，使交互方式在终端和文件里面切换，而不需要更改任何其它内容；
+
+## 实例
+### 读写文件内容（**file.c**）
+读取位于不同位置的文本文件abc，然后将其内容（**只有一行且没有空格**）写到文本文件d中；
+```c
+#include <stdio.h>
+void ReadAndWriteFile(FILE *p1, FILE *p2)
+{
+    // 用于记录文件内容
+    char str[100]={0};
+    // 检测文件是否打开成功
+    if(p1==NULL)
+    {
+        printf("Not Found\n");
+        return;
+    }
+    fscanf(p1,"%s",str);        // 从p1所指文件里读取数据
+    fprintf(p2,"%s\n",str);     // 输出数据到p2所指文件
+}
+
+int main()
+{
+    FILE *p1=NULL,*p2=NULL,*p3=NULL,*p4=NULL;
+    p1=fopen("a.txt","r");      // 本目录
+    p2=fopen("sub\\b.txt","r"); // 子目录
+    p3=fopen("..\\c.txt","r");  // 上一目录
+    p4=fopen("d.txt","a");      // 输出文件
+    ReadAndWriteFile(p1,p4);
+    ReadAndWriteFile(p2,p4);
+    ReadAndWriteFile(p3,p4);
+    _fcloseall();            // 关闭所有文件以正常结束程序
+    return 0;
+}
+```
+注：因为使用了`a`模式，所以**不会删除**前面的执行结果；  
+因此多次运行该程序会让`d.txt`显示以下结果：  
+```
+a
+b
+c
+a
+b
+c
+……
+```
+
+### 文件重定向（**freopen.c**）
+将标准输入输出文件分别重定向到`in.txt`和`out.txt`；  
+然后完成`A+B problem`；
+```c
+#include <stdio.h>
+int main()
+{
+    freopen("in.txt","r",stdin);
+    freopen("out.txt","w",stdout);
+
+    int a,b;
+    scanf("%d%d",&a,&b);
+    printf("%d\n",a+b);
+    _fcloseall();
+    return 0;
+}
+```
+在`in.txt`里面输入2个数，运行程序，然后打开`out.txt`，即可看到结果；
